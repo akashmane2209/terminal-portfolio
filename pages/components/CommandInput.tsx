@@ -100,7 +100,9 @@ function CommandInput() {
           />
         </form>
         {suggestion && (
-          <p className="sugesstion absolute left-4 opacity-30">{suggestion}</p>
+          <p className="sugesstion absolute left-4 hidden opacity-30 md:block">
+            {suggestion}
+          </p>
         )}
       </div>
     </div>
