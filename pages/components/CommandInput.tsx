@@ -76,7 +76,7 @@ function CommandInput() {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (commandInputRef.current) {
-      executeCommand(commandInputRef.current.value);
+      executeCommand(commandInputRef.current.value.trim());
       commandInputRef.current.value = '';
       setSuggestion(undefined);
       setCommandIndex(history.length + 1);
