@@ -35,12 +35,7 @@ function CommandInput() {
     }
   }, [history]);
   const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.code === 'Enter' && commandInputRef.current?.value) {
-      executeCommand(commandInputRef.current.value);
-      commandInputRef.current.value = '';
-      setSuggestion(undefined);
-      setCommandIndex(history.length + 1);
-    } else if (
+    if (
       e.code === 'ArrowRight' &&
       commandInputRef.current?.value &&
       suggestion?.length
@@ -78,21 +73,32 @@ function CommandInput() {
     else setIsExecutable(false);
     setSuggestion(suggestion);
   };
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    if (commandInputRef.current) {
+      executeCommand(commandInputRef.current.value);
+      commandInputRef.current.value = '';
+      setSuggestion(undefined);
+      setCommandIndex(history.length + 1);
+    }
+  };
   return (
     <div>
       <CommandBar />
       <div className="input relative flex">
         <span className=" text-green-400">➜</span>
-        <input
-          aria-label="command input"
-          onKeyDown={handleKeyDown}
-          ref={commandInputRef}
-          onChange={handleOnChange}
-          type="text"
-          className={`z-10 ml-2 flex-1 border-none bg-transparent ${
-            isExecutable ? 'text-green-300' : 'text-white'
-          } outline-none`}
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            aria-label="command input"
+            onKeyDown={handleKeyDown}
+            ref={commandInputRef}
+            onChange={handleOnChange}
+            type="text"
+            className={`z-10 ml-2 flex-1 border-none bg-transparent ${
+              isExecutable ? 'text-green-300' : 'text-white'
+            } outline-none`}
+          />
+        </form>
         {suggestion && (
           <p className="sugesstion absolute left-4 opacity-30">{suggestion}</p>
         )}
