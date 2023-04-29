@@ -90,6 +90,10 @@ function CommandInput() {
         <form onSubmit={handleSubmit}>
           <input
             aria-label="command input"
+            autoComplete="off"
+            spellCheck="false"
+            autoFocus
+            autoCapitalize="off"
             onKeyDown={handleKeyDown}
             ref={commandInputRef}
             onChange={handleOnChange}
