@@ -14,7 +14,8 @@ interface CommandContext {
     'projects',
     'contact',
     'download',
-    'gui'
+    'gui',
+    'clear'
   ];
 }
 
