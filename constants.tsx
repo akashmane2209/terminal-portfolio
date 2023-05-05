@@ -21,7 +21,8 @@ export const COMMANDS = [
   'projects',
   'contact',
   'download',
-  'gui'
+  'gui',
+  'clear'
 ] as const;
 export const HELP_TEXT = {
   help: 'List of all commands that are available',
@@ -32,7 +33,8 @@ export const HELP_TEXT = {
   contact:
     'Shows contact info such as email & other social media profiles of me',
   download: 'Download the latest copy of my resume',
-  gui: 'Shows GUI view of my portfolio'
+  gui: 'Shows GUI view of my portfolio',
+  clear:'to clear the screen'
 };
 
 export const EXPERIENCES = [
